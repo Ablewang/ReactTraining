@@ -221,6 +221,7 @@ ul{list-style: none;}
 	margin-right:20px;
 	margin-bottom:20px;
 	float:left;
+	cursor: pointer;
 }
 .cus-ls .ls-itm:hover{
 	box-shadow: 1px 1px 1px #aaa;
