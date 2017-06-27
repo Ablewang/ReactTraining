@@ -1,16 +1,20 @@
-import React,{Component} from 'react';
-import config from './config.json';
-class LoginPopup extends Component{
-	constructor(props){
+import React, {
+	Component
+} from 'react';
+class LoginPopup extends Component {
+	constructor(props) {
 		super(props)
 		this.username = ""
 		this.password = ""
 	}
-	Login(){
-		var data ={username:this.username,password:this.password};
+	Login() {
+		var data = {
+			username: this.username,
+			password: this.password
+		};
 		this.props.loginEvent(data);
 	}
-	render(){
+	render() {
 		return (
 			<div className='content_continer'>
 				<div className="login_close"></div>	
