@@ -42,6 +42,9 @@ let DataAction = {
 	},
 	getHotData: () => {
 		return !IndexConfig ? null : IndexConfig.lst_hot;
+	},
+	getFooterInfo: () => {
+		return !IndexConfig ? null : IndexConfig.footer;
 	}
 }
 

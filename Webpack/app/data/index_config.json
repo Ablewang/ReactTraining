@@ -40,6 +40,7 @@
 	"lst_data": {
 		"产品设计": {
 			"index": 1,
+			"total_num": 30,
 			"data": [{
 				"index": 1,
 				"title": "混音全揭秘 舞曲实战篇 揭秘音乐揭秘 揭秘音乐揭秘",
@@ -101,6 +102,7 @@
 
 		"编程语言": {
 			"index": 2,
+			"total_num": 35,
 			"data": [{
 				"index": 1,
 				"title": "混音全揭秘 舞曲实战篇 揭秘音乐揭秘 揭秘音乐揭秘",
@@ -155,13 +157,61 @@
 	},
 	"lst_hot": {
 		"move": {
-			"img": "",
-			"url": ""
+			"img": "move.jpg",
+			"url": "www.baidu.com"
 		},
-		"hot": [{
-			"img": "",
-			"title": "",
-			"hot_num": 0
+		"ht_lst": [{
+			"index":1,
+			"img": "ht-sm-1.jpg",
+			"title": "花儿为什么这样红",
+			"hot_num": 21567
+		},{
+			"index":2,
+			"img": "ht-sm-2.jpg",
+			"title": "母亲节",
+			"hot_num": 20003
+		},{
+			"index":3,
+			"img": "ht-sm-3.jpg",
+			"title": "父亲节",
+			"hot_num": 20000
+		},{
+			"index":4,
+			"img": "ht-sm-4.jpg",
+			"title": "音乐节",
+			"hot_num": 17889
+		},{
+			"index":5,
+			"img": "ht-sm-5.jpg",
+			"title": "狄仁杰",
+			"hot_num": 17667
+		},{
+			"index":6,
+			"img": "ht-sm-3.jpg",
+			"title": "福尔摩斯探案集",
+			"hot_num": 16766
+		},{
+			"index":7,
+			"img": "ht-sm-1.jpg",
+			"title": "解密",
+			"hot_num": 14567
+		},{
+			"index":8,
+			"img": "ht-sm-2.jpg",
+			"title": "棒棒哒",
+			"hot_num": 11567
+		}]
+	},
+	"footer":{
+		"link":[{
+			"title":"网易公开课",
+			"url":"https://open.163.com/"
+		},{
+			"title":"网易云课堂",
+			"url":"http://study.163.com/"
+		},{
+			"title":"中国大学MOOC",
+			"url":"http://www.icourse163.org/"
 		}]
 	}
 }
