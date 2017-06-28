@@ -40,11 +40,22 @@ let DataAction = {
 	getListData: () => {
 		return !IndexConfig ? null : IndexConfig.lst_data;
 	},
+	getListRange: (owner, page, size) => {
+		let res = [];
+		if (IndexConfig) {
+			let list = IndexConfig.lst_data[owner];
+			res = list.slice((page - 1) * size - 1, page * size);
+		}
+		return res;
+	},
 	getHotData: () => {
 		return !IndexConfig ? null : IndexConfig.lst_hot;
 	},
 	getFooterInfo: () => {
 		return !IndexConfig ? null : IndexConfig.footer;
+	},
+	getBannerList: () => {
+		return !IndexConfig ? null : IndexConfig.banner_lst;
 	}
 }
 

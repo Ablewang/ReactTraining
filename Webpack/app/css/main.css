@@ -5,8 +5,8 @@
 }
 html,body{width: 100%;height: 100%;background-color: #f8f8f8;box-sizing: border-box;}
 body > div{box-sizing: border-box;max-width: 1652px;min-width: 1366px;margin:0 auto;background-color: #fff;}
-header,.prodc,.shw,.lst,footer{box-sizing: border-box;max-width: 1652px;min-width: 1366px;margin:0 auto;background-color: #fff;}
-header > div,.prodc>div,.shw>div,.lst>div,footer>div{box-sizing: border-box;}
+header,.banner,.prodc,.shw,.lst,footer{box-sizing: border-box;max-width: 1652px;min-width: 1366px;margin:0 auto;background-color: #fff;}
+header > div,.banner>div,.prodc>div,.shw>div,.lst>div,footer>div{box-sizing: border-box;}
 a{text-decoration: none;outline: none;}
 ul{list-style: none;}
 .cls{clear:both;}
@@ -142,7 +142,7 @@ ul{list-style: none;}
 	float:left;
 	margin: 0;
 }
-.bnr-imgs ul{width:5000px;}
+.bnr-imgs ul{width:5000px;position: absolute;}
 .bnr-btn{
 	background-color: transparent;
 	position: absolute;
@@ -248,12 +248,10 @@ ul{list-style: none;}
 	font-size: 20px;
 	text-align: center;
 	float:left;
+	color:#666666;
 }
-.cus-tab a{color:#666666;}
 .cus-tab-act{
 	background-color: #39a030 !important;
-}
-.cus-tab-act a{
 	color:#fff !important;
 }
 .cus-tbc{margin:30px 0;}
@@ -297,31 +295,29 @@ ul{list-style: none;}
     left: 3px;
 }
 .cus-pgs{
-	position: absolute;
-	height: 20px;
-	bottom: 0;
-	right:20px;
+	float:right;
+	margin-right: 20px;
 }
 .cus-pgs ul,.pgs-prev,.pgs-nxt{height:20px;float:left;}
-.cus-pgs ul{margin-top:-1px;}
+.cus-pgs ul{margin-top:-2px;}
 .pgs-prev,.pgs-nxt{
 	width: 30px;
 	background-color: #9dd8b1;
 	background-repeat: no-repeat;
 	cursor: pointer;
 }
-.pgs-prev{background-image: url('./../imgs/icon-arrow.png');background-position: 12px 0;}
-.pgs-nxt{background-image: url('./../imgs/icon-arrow.png');background-position: 12px -20px;}
+.pgs-prev{background-image: url('./../imgs/icon-arrow.png');background-position: 12px 0;margin-right: 10px;}
+.pgs-nxt{background-image: url('./../imgs/icon-arrow.png');background-position: 12px -20px;margin-left: 10px;}
 .cus-pgs li{
 	display: inline-block;
-	margin:0 9px;
-	width:20px;
 	height: 20px;
 	line-height: 20px;
 	font-size: 14px;
 	color:#666666;
 	text-align: center;
 	cursor: pointer;
+	padding: 0 6px;
+	margin:0 1px;
 }
 .cus-pgs li:hover{
 	color:#39a030;

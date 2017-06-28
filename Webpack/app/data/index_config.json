@@ -22,7 +22,7 @@
 		"funs_num": 50,
 		"nav_lst": ["网易公开课", "云课堂", "中国大学MCC"]
 	},
-	"banner_lst": ["./imgs/banner1.jpg", "./imgs/banner2.jpg", "./imgs/banner3.jpg"],
+	"banner_lst": ["banner1.jpg", "banner2.jpg", "banner3.jpg"],
 	"prods": [{
 		"index": 1,
 		"title": "网易公开课",
@@ -40,7 +40,7 @@
 	"lst_data": {
 		"产品设计": {
 			"index": 1,
-			"total_num": 30,
+			"total_num": 100,
 			"data": [{
 				"index": 1,
 				"title": "混音全揭秘 舞曲实战篇 揭秘音乐揭秘 揭秘音乐揭秘",
@@ -102,7 +102,7 @@
 
 		"编程语言": {
 			"index": 2,
-			"total_num": 35,
+			"total_num": 18,
 			"data": [{
 				"index": 1,
 				"title": "混音全揭秘 舞曲实战篇 揭秘音乐揭秘 揭秘音乐揭秘",
@@ -161,57 +161,57 @@
 			"url": "www.baidu.com"
 		},
 		"ht_lst": [{
-			"index":1,
+			"index": 1,
 			"img": "ht-sm-1.jpg",
 			"title": "花儿为什么这样红",
 			"hot_num": 21567
-		},{
-			"index":2,
+		}, {
+			"index": 2,
 			"img": "ht-sm-2.jpg",
 			"title": "母亲节",
 			"hot_num": 20003
-		},{
-			"index":3,
+		}, {
+			"index": 3,
 			"img": "ht-sm-3.jpg",
 			"title": "父亲节",
 			"hot_num": 20000
-		},{
-			"index":4,
+		}, {
+			"index": 4,
 			"img": "ht-sm-4.jpg",
 			"title": "音乐节",
 			"hot_num": 17889
-		},{
-			"index":5,
+		}, {
+			"index": 5,
 			"img": "ht-sm-5.jpg",
 			"title": "狄仁杰",
 			"hot_num": 17667
-		},{
-			"index":6,
+		}, {
+			"index": 6,
 			"img": "ht-sm-3.jpg",
 			"title": "福尔摩斯探案集",
 			"hot_num": 16766
-		},{
-			"index":7,
+		}, {
+			"index": 7,
 			"img": "ht-sm-1.jpg",
 			"title": "解密",
 			"hot_num": 14567
-		},{
-			"index":8,
+		}, {
+			"index": 8,
 			"img": "ht-sm-2.jpg",
 			"title": "棒棒哒",
 			"hot_num": 11567
 		}]
 	},
-	"footer":{
-		"link":[{
-			"title":"网易公开课",
-			"url":"https://open.163.com/"
-		},{
-			"title":"网易云课堂",
-			"url":"http://study.163.com/"
-		},{
-			"title":"中国大学MOOC",
-			"url":"http://www.icourse163.org/"
+	"footer": {
+		"link": [{
+			"title": "网易公开课",
+			"url": "https://open.163.com/"
+		}, {
+			"title": "网易云课堂",
+			"url": "http://study.163.com/"
+		}, {
+			"title": "中国大学MOOC",
+			"url": "http://www.icourse163.org/"
 		}]
 	}
 }

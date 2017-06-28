@@ -8,6 +8,7 @@ import Login from './Login';
 
 import IndexNotify from './IndexNotify';
 import IndexHeader from './IndexHeader';
+import Carousel from './Carousel';
 import IndexProds from './IndexProds';
 import IndexShow from './IndexShow';
 import IndexCon from './IndexCon';
@@ -20,6 +21,8 @@ import './index.temp.html';
 render(<IndexNotify action={DataAction}/>, document.getElementById('root'));
 
 render(<IndexHeader action={DataAction}/>, document.getElementById('header'));
+
+render(<Carousel action={DataAction}/>, document.getElementById('banner'));
 
 render(<IndexProds action={DataAction}/>, document.getElementById('prods'));
 
