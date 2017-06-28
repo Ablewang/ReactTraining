@@ -43,8 +43,8 @@ let DataAction = {
 	getListRange: (owner, page, size) => {
 		let res = [];
 		if (IndexConfig) {
-			let list = IndexConfig.lst_data[owner];
-			res = list.slice((page - 1) * size - 1, page * size);
+			let list = IndexConfig.lst_data[owner].data;
+			res = list.slice((page - 1) * size, page * size);
 		}
 		return res;
 	},
