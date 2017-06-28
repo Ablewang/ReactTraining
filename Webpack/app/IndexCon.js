@@ -181,12 +181,22 @@ class ListPage extends Component {
 	constructor(){
 		super()
 		this.state={
-			owner_tb:''
+			owner_tb:'',
+			cur_pg:1,
+			max_pg:1
 		}
 	}
-	changePage(e) {
-		this.resetLiStyle(e.target);
-		let num = parseInt(e.target.innerHTML);
+	pgMove(plus){
+		let pageUl = this.refs.pageUl.children;
+		let page = this.state.cur_pg + plus;
+		page = page < 1 ? 1 : page > this.state.max_pg ? this.state.max_pg : page;
+		this.setState({cur_pg:page},()=>{
+			this.changePage(pageUl[page-1]);
+		})
+	}
+	changePage(li) {
+		this.resetLiStyle(li);
+		let num = parseInt(li.innerHTML);
 		let prods = action.getListRange(this.props.owner, num, pagesize);
 		let reRenderTb=(list)=>{
 			let res= [];
@@ -208,22 +218,23 @@ class ListPage extends Component {
 		let num = this.props.num;
 		let max = Math.ceil(num / 12);
 		this.state.owner_tb = this.props.tb;
+		this.state.max_pg = max;
 		let ls = (max) => {
 			let res = [];
 			for (let i = 1; i <= max; i++) {
-				res.push(<li key={i} onClick={(e)=>{this.changePage(e);}} className={i == 1 ? "cus-pgs-cur" : ""}>{i}</li>);
+				res.push(<li key={i} onClick={(e)=>{this.changePage(e.target);}} className={i == 1 ? "cus-pgs-cur" : ""}>{i}</li>);
 			}
 			return res;
 		};
 		return (
 			<div className="cus-pgs">
-			<span className="pgs-prev"></span>
-			<ul>
+			<span className="pgs-prev" onClick={()=>{this.pgMove(-1);}}></span>
+			<ul ref="pageUl">
 				{
 					ls(max)
 				}
 			</ul>
-			<span className="pgs-nxt"></span>
+			<span className="pgs-nxt" onClick={()=>{this.pgMove(1);}}></span>
 		</div>
 		)
 	}
