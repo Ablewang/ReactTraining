@@ -40,7 +40,7 @@
 	"lst_data": {
 		"产品设计": {
 			"index": 1,
-			"total_num": 100,
+			"total_num": 18,
 			"data": [{
 				"index": 1,
 				"title": "混音全揭秘 舞曲实战篇 揭秘音乐揭秘 揭秘音乐揭秘",
@@ -94,7 +94,77 @@
 				"index": 8,
 				"title": "混音全揭秘 舞曲实战篇 揭秘音乐揭秘 揭秘音乐揭秘",
 				"group": "音频帮",
-				"img": "items/item14.jpg",
+				"img": "items/item13.jpg",
+				"saled": 510,
+				"price": 800
+			}, {
+				"index": 9,
+				"title": "混音全揭秘 舞曲实战篇 揭秘音乐揭秘 揭秘音乐揭秘",
+				"group": "音频帮",
+				"img": "items/item12.jpg",
+				"saled": 510,
+				"price": 800
+			}, {
+				"index": 10,
+				"title": "混音全揭秘 舞曲实战篇 揭秘音乐揭秘 揭秘音乐揭秘",
+				"group": "音频帮",
+				"img": "items/item11.jpg",
+				"saled": 510,
+				"price": 800
+			}, {
+				"index": 11,
+				"title": "混音全揭秘 舞曲实战篇 揭秘音乐揭秘 揭秘音乐揭秘",
+				"group": "音频帮",
+				"img": "items/item10.jpg",
+				"saled": 510,
+				"price": 800
+			}, {
+				"index": 12,
+				"title": "混音全揭秘 舞曲实战篇 揭秘音乐揭秘 揭秘音乐揭秘",
+				"group": "音频帮",
+				"img": "items/item9.jpg",
+				"saled": 510,
+				"price": 800
+			}, {
+				"index": 13,
+				"title": "混音全揭秘 舞曲实战篇 揭秘音乐揭秘 揭秘音乐揭秘",
+				"group": "音频帮",
+				"img": "items/item8.jpg",
+				"saled": 510,
+				"price": 800
+			}, {
+				"index": 14,
+				"title": "混音全揭秘 舞曲实战篇 揭秘音乐揭秘 揭秘音乐揭秘",
+				"group": "音频帮",
+				"img": "items/item7.jpg",
+				"saled": 510,
+				"price": 800
+			}, {
+				"index": 15,
+				"title": "混音全揭秘 舞曲实战篇 揭秘音乐揭秘 揭秘音乐揭秘",
+				"group": "音频帮",
+				"img": "items/item6.jpg",
+				"saled": 510,
+				"price": 800
+			}, {
+				"index": 16,
+				"title": "混音全揭秘 舞曲实战篇 揭秘音乐揭秘 揭秘音乐揭秘",
+				"group": "音频帮",
+				"img": "items/item5.jpg",
+				"saled": 510,
+				"price": 800
+			}, {
+				"index": 17,
+				"title": "混音全揭秘 舞曲实战篇 揭秘音乐揭秘 揭秘音乐揭秘",
+				"group": "音频帮",
+				"img": "items/item4.jpg",
+				"saled": 510,
+				"price": 800
+			}, {
+				"index": 18,
+				"title": "混音全揭秘 舞曲实战篇 揭秘音乐揭秘 揭秘音乐揭秘",
+				"group": "音频帮",
+				"img": "items/item3.jpg",
 				"saled": 510,
 				"price": 800
 			}]
@@ -102,7 +172,7 @@
 
 		"编程语言": {
 			"index": 2,
-			"total_num": 18,
+			"total_num": 10,
 			"data": [{
 				"index": 1,
 				"title": "混音全揭秘 舞曲实战篇 揭秘音乐揭秘 揭秘音乐揭秘",
@@ -150,6 +220,27 @@
 				"title": "混音全揭秘 舞曲实战篇 揭秘音乐揭秘 揭秘音乐揭秘",
 				"group": "音频帮",
 				"img": "items/item7.jpg",
+				"saled": 510,
+				"price": 800
+			}, {
+				"index": 8,
+				"title": "混音全揭秘 舞曲实战篇 揭秘音乐揭秘 揭秘音乐揭秘",
+				"group": "音频帮",
+				"img": "items/item8.jpg",
+				"saled": 510,
+				"price": 800
+			}, {
+				"index": 9,
+				"title": "混音全揭秘 舞曲实战篇 揭秘音乐揭秘 揭秘音乐揭秘",
+				"group": "音频帮",
+				"img": "items/item9.jpg",
+				"saled": 510,
+				"price": 800
+			}, {
+				"index": 10,
+				"title": "混音全揭秘 舞曲实战篇 揭秘音乐揭秘 揭秘音乐揭秘",
+				"group": "音频帮",
+				"img": "items/item10.jpg",
 				"saled": 510,
 				"price": 800
 			}]

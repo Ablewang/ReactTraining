@@ -37,8 +37,15 @@ let DataAction = {
 	getShowImgs: () => {
 		return !IndexConfig ? null : IndexConfig.show_img;
 	},
-	getListData: () => {
-		return !IndexConfig ? null : IndexConfig.lst_data;
+	getListData: (pagesize) => {
+		let res = {};
+		if (IndexConfig) {
+			Object.keys(IndexConfig.lst_data).map((item)=>{
+				res[item] = DataAction.cloneObj(IndexConfig.lst_data[item]);
+				res[item].data = DataAction.getListRange(item,1,pagesize);
+			})
+		}
+		return res;
 	},
 	getListRange: (owner, page, size) => {
 		let res = [];
@@ -56,6 +63,13 @@ let DataAction = {
 	},
 	getBannerList: () => {
 		return !IndexConfig ? null : IndexConfig.banner_lst;
+	},
+	cloneObj(obj){
+		let n_obj = {};
+		Object.keys(obj).map((item)=>{
+			n_obj[item] = obj[item];
+		})
+		return n_obj;
 	}
 }
 

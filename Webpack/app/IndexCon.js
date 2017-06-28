@@ -1,11 +1,17 @@
 import React, {
 	Component
 } from 'react'
+import {
+	render
+} from 'react-dom';
+
 let action = null
+let pagesize = 12
+
 class IndexCon extends Component {
 	render() {
 		action = this.props.action;
-		let list = !this.props.action ? null : this.props.action.getListData();
+		let list = !this.props.action ? null : this.props.action.getListData(pagesize);
 		let hot = !this.props.action ? null : this.props.action.getHotData();
 		return (
 			<div className="idx-g-cus">
@@ -135,16 +141,18 @@ class ListTable extends Component {
 					first = false;
 					return (
 					<div id={"tab"+key} key={key}  className="cus-lsc"  style={sty}>
-						<div className="cus-ls">
-							{
-								this.props.list[item].data.map((dt)=>{
-									return(
-										<ListItem key={dt.index} data={dt} />
-									)
-								})
-							}
+						<div id={"tb_c"+key} key={key}>
+							<div className="cus-ls">
+								{
+									this.props.list[item].data.map((dt)=>{
+										return(
+											<ListItem key={dt.index} data={dt} />
+										)
+									})
+								}
+							</div>
 						</div>
-						<ListPage owner={item} num={this.props.list[item].total_num}/>
+						<ListPage tb={"tb_c"+key} owner={item} num={this.props.list[item].total_num}/>
 					</div>
 					)
 				})
@@ -170,11 +178,24 @@ class ListItem extends Component {
 }
 
 class ListPage extends Component {
+	constructor(){
+		super()
+		this.state={
+			owner_tb:''
+		}
+	}
 	changePage(e) {
 		this.resetLiStyle(e.target);
 		let num = parseInt(e.target.innerHTML);
-		let prods = action.getListRange(this.props.owner, num, 3);
-		console.log(prods);
+		let prods = action.getListRange(this.props.owner, num, pagesize);
+		let reRenderTb=(list)=>{
+			let res= [];
+			list.map((item)=>{
+				res.push(<ListItem key={item.index} data={item} />);
+			})
+			return res;
+		}
+		render(<div className="cus-ls">{reRenderTb(prods)}</div>,document.getElementById(this.state.owner_tb));
 	}
 	resetLiStyle(li) {
 		let lis = li.parentNode.children;
@@ -186,6 +207,7 @@ class ListPage extends Component {
 	render() {
 		let num = this.props.num;
 		let max = Math.ceil(num / 12);
+		this.state.owner_tb = this.props.tb;
 		let ls = (max) => {
 			let res = [];
 			for (let i = 1; i <= max; i++) {
