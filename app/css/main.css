@@ -256,6 +256,11 @@ ul{list-style: none;}
 }
 .cus-tbc{margin:30px 0;}
 .cus-lsc{position: relative;}
+.cus-ls{
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+}
 .cus-ls .ls-itm{
 	width:220px;
 	background-color:#fff;

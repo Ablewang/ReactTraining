@@ -1,5 +1,4 @@
-import IndexConfig from './data/index_config.json'
-import './jquery-1.8.3.min.js';
+import IndexConfig from '../data/index_config.json'
 
 let DataAction = {
 	getNotify: (config) => {
@@ -40,9 +39,9 @@ let DataAction = {
 	getListData: (pagesize) => {
 		let res = {};
 		if (IndexConfig) {
-			Object.keys(IndexConfig.lst_data).map((item)=>{
+			Object.keys(IndexConfig.lst_data).map((item) => {
 				res[item] = DataAction.cloneObj(IndexConfig.lst_data[item]);
-				res[item].data = DataAction.getListRange(item,1,pagesize);
+				res[item].data = DataAction.getListRange(item, 1, pagesize);
 			})
 		}
 		return res;
@@ -64,9 +63,9 @@ let DataAction = {
 	getBannerList: () => {
 		return !IndexConfig ? null : IndexConfig.banner_lst;
 	},
-	cloneObj(obj){
+	cloneObj(obj) {
 		let n_obj = {};
-		Object.keys(obj).map((item)=>{
+		Object.keys(obj).map((item) => {
 			n_obj[item] = obj[item];
 		})
 		return n_obj;

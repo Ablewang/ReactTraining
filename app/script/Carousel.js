@@ -13,8 +13,8 @@ class Carousel extends Component {
 	}
 	componentDidMount() {
 		if (this.refs.image) {
-			let wt = this.refs.image.getElementsByTagName('li')[0].offsetWidth;
-			this.refs.image.style.width = (this.refs.image.getElementsByTagName('li')[0].offsetWidth * this.state.img_cnt) + 'px';
+			let wt = this.refs.image.getElementsByTagName('img')[0].naturalWidth;
+			this.refs.image.style.width = (wt * this.state.img_cnt) + 'px';
 			this.startTimmer();
 		}
 	}

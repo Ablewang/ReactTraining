@@ -14,9 +14,9 @@ import IndexShow from './IndexShow';
 import IndexCon from './IndexCon';
 import IndexFooter from './IndexFooter';
 
-import './css/main.css'
-import './css/login_popup.css';
-import './index.temp.html';
+import '../css/main.css'
+import '../css/login_popup.css';
+import '../index.temp.html';
 
 render(<IndexNotify action={DataAction}/>, document.getElementById('root'));
 

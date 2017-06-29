@@ -1,4 +1,4 @@
-import accounts from './data/accounts.json';
+import accounts from '../data/accounts.json';
 import './jquery-1.8.3.min.js';
 
 let Login = {
