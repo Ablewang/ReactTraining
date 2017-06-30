@@ -276,6 +276,7 @@ ul{list-style: none;}
 .cus-ls .ls-itm:hover .itm-tt{
 	color:#39a030;
 }
+.ls-itm-space{background-color: transparent;box-shadow: none;cursor: auto;width: 220px;height: 230px;margin: 0 20px 20px 0;}
 .itm-img{width:100%;}
 .ls-itm > span{margin:0 5px;display: block;font-size:12px;line-height:24px;overflow: hidden;text-overflow: ellipsis;white-space: nowrap;}
 .itm-grp{color:#999;}
@@ -334,7 +335,7 @@ ul{list-style: none;}
 .cus-rg{
 	width:225px;
 }
-.cus-rg div{
+.cus-rg > div{
 	box-sizing: border-box;
 	padding: 20px;
 	border-color: #ecebeb;
@@ -347,9 +348,36 @@ ul{list-style: none;}
 	font-size: 16px;
 }
 .rg-u-mv{
+	position: relative;
 	margin-bottom: 20px;
 	font-size: 14px;
 }
+.mv-start{position: relative;}
+.mv-start-circle{
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border: 3px solid rgba(255,255,255,0.9);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    border-radius: 23px;
+    background: rgba(255,255,255,0.4);
+    cursor: pointer;
+}
+.mv-start-tran{
+    position: relative;
+    top: 10px;
+    left: 15px;
+    border: 0;
+    width: 0;
+    height: 0;
+    border-top: 10px solid transparent;
+    border-left: 14px solid rgba(255,255,255,0.65);
+    border-bottom: 10px solid transparent;
+}
+.mv-start-circle:hover{background: rgba(255,255,255,0.6);}
+.mv-start-circle:hover .mv-start-tran{border-left-color: rgba(255,255,255,0.8);}
 .rg-u-hot li{
 	display: block;
 	height:50px;

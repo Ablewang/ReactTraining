@@ -41,7 +41,14 @@ class HotMove extends Component {
 	render() {
 		let move = this.props.move
 		return (
-			<div className="idx-g-cus-bxs rg-u-mv">观看下面的视频来了解吧：<a href={move.href}><img src={move.img} alt="" /></a></div>
+			<div className="idx-g-cus-bxs rg-u-mv">观看下面的视频来了解吧：
+				<a href={move.href}>
+					<div className="mv-start">
+					<img src={move.img} alt="" />
+					<div className="mv-start-circle"><div className="mv-start-tran"></div></div>
+					</div>
+				</a>
+			</div>
 		)
 	}
 }
@@ -130,6 +137,14 @@ class ListTab extends Component {
 }
 
 class ListTable extends Component {
+	constructor() {
+		super()
+		this.state = {
+			pagesize: 12,
+			maxnum: 0,
+			cur_pg: 1
+		}
+	}
 	render() {
 		let first = true;
 		return (
@@ -178,34 +193,36 @@ class ListItem extends Component {
 }
 
 class ListPage extends Component {
-	constructor(){
+	constructor() {
 		super()
-		this.state={
-			owner_tb:'',
-			cur_pg:1,
-			max_pg:1
+		this.state = {
+			owner_tb: '',
+			cur_pg: 1,
+			max_pg: 1
 		}
 	}
-	pgMove(plus){
+	pgMove(plus) {
 		let pageUl = this.refs.pageUl.children;
 		let page = this.state.cur_pg + plus;
 		page = page < 1 ? 1 : page > this.state.max_pg ? this.state.max_pg : page;
-		this.setState({cur_pg:page},()=>{
-			this.changePage(pageUl[page-1]);
+		this.setState({
+			cur_pg: page
+		}, () => {
+			this.changePage(pageUl[page - 1]);
 		})
 	}
 	changePage(li) {
 		this.resetLiStyle(li);
 		let num = parseInt(li.innerHTML);
 		let prods = action.getListRange(this.props.owner, num, pagesize);
-		let reRenderTb=(list)=>{
-			let res= [];
-			list.map((item)=>{
+		let reRenderTb = (list) => {
+			let res = [];
+			list.map((item) => {
 				res.push(<ListItem key={item.index} data={item} />);
 			})
 			return res;
 		}
-		render(<div className="cus-ls">{reRenderTb(prods)}</div>,document.getElementById(this.state.owner_tb));
+		render(<div className="cus-ls">{reRenderTb(prods)}</div>, document.getElementById(this.state.owner_tb));
 	}
 	resetLiStyle(li) {
 		let lis = li.parentNode.children;
