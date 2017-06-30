@@ -103,7 +103,7 @@ class List extends Component {
 			<div className="cus-dit">
 				<ListTab setTab={this.setCurrentTab} list={this.props.list} />
 				{
-					this.cur_Tab.length > 0 ? <ListTable cur_tab={this.state.cur_tab} list={this.props.list} /> : ''
+					(!this.state.cur_Tab || this.state.cur_Tab.length <= 0) ?  '':<ListTable cur_tab={this.state.cur_tab} list={this.props.list} />
 				}
 			</div>
 		)
