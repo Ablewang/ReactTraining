@@ -36,6 +36,16 @@ let DataAction = {
 	getShowImgs: () => {
 		return !IndexConfig ? null : IndexConfig.show_img;
 	},
+	getListRangeData: (owner, page, pagesize) => {
+		let res = {};
+		if (IndexConfig) {
+			if (IndexConfig.lst_data[owner]) {
+				rest = DataAction.cloneObj(IndexConfig.lst_data[item]);
+				res[item].data = DataAction.getListRange(item, 1, pagesize);
+			}
+		}
+		return res;
+	},
 	getListData: (pagesize) => {
 		let res = {};
 		if (IndexConfig) {

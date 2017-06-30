@@ -86,11 +86,25 @@ class HotListItem extends Component {
 }
 
 class List extends Component {
+	constructor() {
+		super()
+		this.setCurrentTab = this.setCurrentTab.bind(this)
+		this.state = {
+			cur_tab: ''
+		}
+	}
+	setCurrentTab(tab) {
+		this.setState({
+			cur_tab: tab
+		});
+	}
 	render() {
 		return (
 			<div className="cus-dit">
-				<ListTab list={this.props.list} />
-				<ListTable list={this.props.list} />
+				<ListTab setTab={this.setCurrentTab} list={this.props.list} />
+				{
+					this.cur_Tab.length > 0 ? <ListTable cur_tab={this.state.cur_tab} list={this.props.list} /> : ''
+				}
 			</div>
 		)
 	}
@@ -114,6 +128,7 @@ class ListTab extends Component {
 			}
 			lsc.style.display = 'block';
 			tblis[tbCur].className += ' cus-tab-act';
+			this.props.setTab(tblis[tbCur].innerHTML);
 		}
 	}
 	render() {
@@ -122,7 +137,6 @@ class ListTab extends Component {
 			<div className="cus-tab">
 				<ul>
 					{
-
 						Object.keys(this.props.list).map((item)=>{
 							let cls = first ? "idx-g-cus-bxs cus-tab-act" : "idx-g-cus-bxs";
 							let key = this.props.list[item].index;
@@ -140,12 +154,20 @@ class ListTable extends Component {
 	constructor() {
 		super()
 		this.state = {
+			cur_lst: [],
+			cur_tab: '',
 			pagesize: 12,
-			maxnum: 0,
 			cur_pg: 1
 		}
 	}
+	setPage(page) {
+		this.setState({
+			cur_lst: action.getListRangeData(this.state.cur_tab, page, this.state.pagesize)
+		});
+	}
 	render() {
+		this.state.cur_tab = this.props.cur_tab;
+		console.log(this.state.cur_tab);
 		let first = true;
 		return (
 			<div className="cus-tbc">
