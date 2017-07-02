@@ -1,26 +1,45 @@
 {
-	"notify_num": 2,
+	"login_inf":{
+		"is_login":false,
+		"cur_acc":""
+	},
+	"account":{
+		"admin":"admin",
+		"able":"able",
+		"evy":"evy"
+	},
 	"notify": [{
 		"index": 1,
 		"text": "网易云课堂微专业，帮助你掌握专业技能，令你求职或加薪多一份独特优势！",
 		"url": "www.baidu.com",
-		"no_notify": true
+		"is_read": false,
+		"no_notify": false
 	}, {
 		"index": 2,
 		"text": "只此一份，别无二家！",
 		"url": "http://www.163.com/",
-		"no_notify": false
+		"is_read": false,
+		"no_notify": true
 	}, {
 		"index": 3,
 		"text": "360驾到！！！！",
 		"url": "https://www.360.cn/",
+		"is_read": false,
+		"no_notify": false
+	}, {
+		"index": 4,
+		"text": "这是一个机会，这是一个另类的机遇！",
+		"url": "https://www.360.cn/",
+		"is_read": false,
 		"no_notify": false
 	}],
 	"header": {
 		"title": "网易教育产品部",
-		"is_follow": false,
-		"funs_num": 50,
 		"nav_lst": ["网易公开课", "云课堂", "中国大学MCC"]
+	},
+	"funs":{
+		"is_follow":false,
+		"funs_num":50
 	},
 	"banner_lst": ["/imgs/banner1.jpg", "/imgs/banner2.jpg", "/imgs/banner3.jpg"],
 	"prods": [{
@@ -167,6 +186,13 @@
 				"img": "/imgs/items/item3.jpg",
 				"saled": 510,
 				"price": 800
+			}, {
+				"index": 19,
+				"title": "混音全揭秘 舞曲实战篇 揭秘音乐揭秘 揭秘音乐揭秘",
+				"group": "音频帮",
+				"img": "/imgs/items/item2.jpg",
+				"saled": 510,
+				"price": 800
 			}]
 		},
 
@@ -290,7 +316,37 @@
 			"index": 8,
 			"img": "/imgs/ht-sm-2.jpg",
 			"title": "棒棒哒",
-			"hot_num": 11567
+			"hot_num": 10567
+		}, {
+			"index": 9,
+			"img": "/imgs/ht-sm-3.jpg",
+			"title": "就是这样的一个人",
+			"hot_num": 9868
+		}, {
+			"index": 10,
+			"img": "/imgs/ht-sm-4.jpg",
+			"title": "林斌的对战",
+			"hot_num": 9778
+		}, {
+			"index": 11,
+			"img": "/imgs/ht-sm-1.jpg",
+			"title": "听听听听",
+			"hot_num": 9777
+		}, {
+			"index": 12,
+			"img": "/imgs/ht-sm-5.jpg",
+			"title": "这不是说书",
+			"hot_num": 8522
+		}, {
+			"index": 13,
+			"img": "/imgs/ht-sm-3.jpg",
+			"title": "因为你不是我",
+			"hot_num": 8005
+		}, {
+			"index": 14,
+			"img": "/imgs/ht-sm-2.jpg",
+			"title": "Love Is Forever",
+			"hot_num": 7688
 		}]
 	},
 	"footer": {

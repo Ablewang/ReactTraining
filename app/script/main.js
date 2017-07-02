@@ -3,8 +3,6 @@ import React from 'react';
 import {
 	render
 } from 'react-dom';
-import LoginPopup from './LoginPopup';
-import Login from './Login';
 
 import IndexNotify from './IndexNotify';
 import IndexHeader from './IndexHeader';
@@ -18,7 +16,6 @@ import '../css/main.css'
 import '../css/login_popup.css';
 import '../index.temp.html';
 
-render(<IndexNotify action={DataAction}/>, document.getElementById('root'));
 
 render(<IndexHeader action={DataAction}/>, document.getElementById('header'));
 

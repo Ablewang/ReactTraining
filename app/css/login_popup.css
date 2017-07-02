@@ -1,27 +1,11 @@
 .content_continer{
 	position: relative;
 	border:1px solid #fff;
-	width: 385px;
-	height: 300px;
+	width: 305px;
 	background-color: #fff;
 	margin:0 auto;
-	margin-top:20px;
 }
-.login_close{
-	position: absolute;
-	margin:0 !important;
-	width:10px !important;
-	height: 10px;
-	top:10px;
-	right:8px;
-	background-image: url('../imgs//close.png');
-	cursor: pointer;
-}
-.content_continer div{
-	margin-left:40px;
-	margin-right:40px;
-	width:calc(100% - 80px);
-}
+
 .content_continer input{
 	width: 100%;
 	height: 44px;
@@ -47,4 +31,11 @@
 	border:1px solid #27ad4b;
 	cursor: pointer;
 	color:#fff;
+}
+.login_error{
+	height: 40px;
+    line-height: 40px;
+    color: red;
+    text-align: center;
+    font-size: 15px;
 }

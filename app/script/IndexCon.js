@@ -4,6 +4,8 @@ import React, {
 import {
 	render
 } from 'react-dom';
+import Popup from './Popup';
+import '../css/move.css';
 
 let action = null
 let pagesize = 12
@@ -38,17 +40,48 @@ class Hot extends Component {
 }
 
 class HotMove extends Component {
+	popupMove(){
+		render(<PopupMove />,document.getElementById('popup'));
+	}
 	render() {
 		let move = this.props.move
 		return (
 			<div className="idx-g-cus-bxs rg-u-mv">观看下面的视频来了解吧：
 				<a href={move.href}>
-					<div className="mv-start">
-					<img src={move.img} alt="" />
-					<div className="mv-start-circle"><div className="mv-start-tran"></div></div>
+					<div onClick={()=>{this.popupMove();}} className="mv-start">
+						<img src={move.img} alt="" />
+						<div className="mv-start-circle"><div className="mv-start-tran"></div></div>
 					</div>
 				</a>
 			</div>
+		)
+	}
+}
+
+class PopupMove extends Component{
+	constructor(){
+		super()
+		this.state={
+			popup_unique:new Date().getTime(),
+			width:0,
+			height:0
+		}
+	}
+	componentWillMount(){
+		let maxHeight = document.body.clientHeight * 0.6;
+		this.setState({
+			width:maxHeight*1.57,
+			height:maxHeight
+		},()=>{console.log(this.state)})
+	}
+	render(){
+		return (
+			<Popup shade_close={true} title="请观看下面的视频" unique={this.state.popup_unique} content={
+				<div className='move-continer' style={{width:this.state.width,height:this.state.height}}>
+					<div className="mv-start-squer-big"><div className="mv-start-tran-big"></div></div>
+					<img className="move-img" src="../imgs/move-big.jpg" alt="" />
+				</div>
+			}/>
 		)
 	}
 }
@@ -103,7 +136,7 @@ class List extends Component {
 			<div className="cus-dit">
 				<ListTab setTab={this.setCurrentTab} list={this.props.list} />
 				{
-					(!this.state.cur_Tab || this.state.cur_Tab.length <= 0) ?  '':<ListTable cur_tab={this.state.cur_tab} list={this.props.list} />
+					(!this.state.cur_tab || this.state.cur_tab.length <= 0) ?  '':<ListTable cur_tab={this.state.cur_tab} list={this.props.list} />
 				}
 			</div>
 		)
@@ -111,37 +144,32 @@ class List extends Component {
 }
 
 class ListTab extends Component {
-	handleClick(id, key) {
-		let lsc = document.getElementById(id);
-		if (lsc) {
-			let list = lsc.parentNode.children;
-			let tblis = lsc.parentElement.previousElementSibling.getElementsByTagName('li');
-			let tbCur = 0;
-			for (let i = tblis.length - 1; i >= 0; i--) {
-				tblis[i].className = tblis[i].className.replace('cus-tab-act', '');
-				if (tblis[i].getAttribute('data-target') == key) {
-					tbCur = i;
-				}
-			}
+	handleClick(e) {
+		let curli = e.target;
+		if (curli) {
+			let list = curli.parentNode.children;
 			for (let i = list.length - 1; i >= 0; i--) {
-				list[i].style.display = 'none';
+				list[i].className = list[i].className.replace('cus-tab-act', '');
 			}
-			lsc.style.display = 'block';
-			tblis[tbCur].className += ' cus-tab-act';
-			this.props.setTab(tblis[tbCur].innerHTML);
+			curli.className += ' cus-tab-act';
+			this.props.setTab(curli.innerHTML);
 		}
+	}
+	componentDidMount(){
+		this.props.setTab(this.refs.tabs.children[0].innerHTML);
 	}
 	render() {
 		let first = true;
+		let kind = action.getListKind();
 		return (
 			<div className="cus-tab">
-				<ul>
+				<ul ref="tabs">
 					{
-						Object.keys(this.props.list).map((item)=>{
+						kind.map((item)=>{
 							let cls = first ? "idx-g-cus-bxs cus-tab-act" : "idx-g-cus-bxs";
 							let key = this.props.list[item].index;
 							first = false;
-							return <li key={key} data-target={key} onClick={()=>{this.handleClick('tab'+key,key);}} className={cls}>{item}</li>
+							return <li key={key} data-target={key} onClick={(e)=>{this.handleClick(e);}} className={cls}>{item}</li>
 						})
 					}
 				</ul>
@@ -153,51 +181,78 @@ class ListTab extends Component {
 class ListTable extends Component {
 	constructor() {
 		super()
+		this.setPage = this.setPage.bind(this)
 		this.state = {
 			cur_lst: [],
 			cur_tab: '',
 			pagesize: 12,
-			cur_pg: 1
+			cur_pg: 1,
+			max_pg: 1
 		}
+	}
+	componentWillMount(){
+		this.state.cur_tab = this.props.cur_tab;
+		this.setPage(1);
+	}
+	componentWillReceiveProps(nextProps){
+		this.state.cur_tab = nextProps.cur_tab;
+		this.setPage(1);
+	}
+	getMaxColumn(){
+		return document.body.scrollWidth > 1585 ? 4 : 3;
 	}
 	setPage(page) {
 		this.setState({
+			cur_pg: page,
 			cur_lst: action.getListRangeData(this.state.cur_tab, page, this.state.pagesize)
 		});
 	}
+	getWidthWithMargin(obj){
+		return obj.offsetWidth + (parseInt(this.getObjectStyle(obj,'marginLeft').replace('px',''))) + (parseInt(this.getObjectStyle(obj,'marginRight').replace('px','')))
+	}
+	getObjectStyle(obj,style){
+		return obj.currentStyle?  obj.currentStyle[style] : document.defaultView.getComputedStyle(obj,null)[style];
+	}
 	render() {
-		this.state.cur_tab = this.props.cur_tab;
-		console.log(this.state.cur_tab);
+		let maxColumn = this.getMaxColumn();
 		let first = true;
+		let item = this.state.cur_lst;
+		let tab = this.state.cur_tab;
+		let key = item.index;
+		let spaceNum = item.data.length % maxColumn ? (maxColumn - item.data.length % maxColumn):0;
+		let createSpace = (num)=>{
+			let res = [];
+			for (var i = 0; i < num ; i++) {
+				res.push(<div key={"sapce"+i} className="ls-itm-space"></div>)
+			}
+			return res;
+		}
 		return (
-			<div className="cus-tbc">
+			<div ref="list_c" className="cus-tbc">
 			{
-				Object.keys(this.props.list).map((item)=>{
-					let sty = first ? {display:"block"} : {display:"none"};
-					let key = this.props.list[item].index;
-					first = false;
-					return (
-					<div id={"tab"+key} key={key}  className="cus-lsc"  style={sty}>
-						<div id={"tb_c"+key} key={key}>
-							<div className="cus-ls">
-								{
-									this.props.list[item].data.map((dt)=>{
-										return(
-											<ListItem key={dt.index} data={dt} />
-										)
-									})
-								}
-							</div>
+				<div id={"tab"+key} key={key}  className="cus-lsc">
+					<div id={"tb_c"+key} key={key}>
+						<div ref="item_l" className="cus-ls">
+							{
+								item.data.map((dt)=>{
+									return(
+										<ListItem key={dt.index} data={dt} />
+									)
+								})
+							}
+							{
+								createSpace(spaceNum)
+							}
 						</div>
-						<ListPage tb={"tb_c"+key} owner={item} num={this.props.list[item].total_num}/>
 					</div>
-					)
-				})
+					<ListPage mx_pg={Math.ceil(item.total_num / this.state.pagesize)} cur_pg={this.state.cur_pg} setPage={this.setPage}/>
+				</div>				
 			}
 			</div>
 		)
 	}
 }
+
 
 class ListItem extends Component {
 	render() {
@@ -218,33 +273,22 @@ class ListPage extends Component {
 	constructor() {
 		super()
 		this.state = {
-			owner_tb: '',
-			cur_pg: 1,
-			max_pg: 1
+			df_mx_pg: 8
 		}
 	}
-	pgMove(plus) {
-		let pageUl = this.refs.pageUl.children;
-		let page = this.state.cur_pg + plus;
-		page = page < 1 ? 1 : page > this.state.max_pg ? this.state.max_pg : page;
-		this.setState({
-			cur_pg: page
-		}, () => {
-			this.changePage(pageUl[page - 1]);
-		})
-	}
-	changePage(li) {
+	handleClick(e){
+		let li = e.target;
 		this.resetLiStyle(li);
-		let num = parseInt(li.innerHTML);
-		let prods = action.getListRange(this.props.owner, num, pagesize);
-		let reRenderTb = (list) => {
-			let res = [];
-			list.map((item) => {
-				res.push(<ListItem key={item.index} data={item} />);
-			})
-			return res;
+		this.paging(parseInt(li.innerHTML));
+	}
+	nextPage(page){
+		page += this.props.cur_pg;
+		if (page > 0 && page <= this.props.mx_pg) {
+			this.paging(page);
 		}
-		render(<div className="cus-ls">{reRenderTb(prods)}</div>, document.getElementById(this.state.owner_tb));
+	}
+	paging(page){
+		this.props.setPage(page);
 	}
 	resetLiStyle(li) {
 		let lis = li.parentNode.children;
@@ -254,26 +298,24 @@ class ListPage extends Component {
 		li.className = 'cus-pgs-cur';
 	}
 	render() {
-		let num = this.props.num;
-		let max = Math.ceil(num / 12);
-		this.state.owner_tb = this.props.tb;
-		this.state.max_pg = max;
+		let cur = this.props.cur_pg;
+		let max = this.state.df_mx_pg > this.props.mx_pg ?  this.props.mx_pg : this.state.df_mx_pg;
 		let ls = (max) => {
 			let res = [];
 			for (let i = 1; i <= max; i++) {
-				res.push(<li key={i} onClick={(e)=>{this.changePage(e.target);}} className={i == 1 ? "cus-pgs-cur" : ""}>{i}</li>);
+				res.push(<li key={i} onClick={(e)=>{this.handleClick(e);}} className={i == cur ? "cus-pgs-cur" : ""}>{i}</li>);
 			}
 			return res;
 		};
 		return (
 			<div className="cus-pgs">
-			<span className="pgs-prev" onClick={()=>{this.pgMove(-1);}}></span>
+			<span className="pgs-prev" onClick={()=>{this.nextPage(-1);}}></span>
 			<ul ref="pageUl">
 				{
 					ls(max)
 				}
 			</ul>
-			<span className="pgs-nxt" onClick={()=>{this.pgMove(1);}}></span>
+			<span className="pgs-nxt" onClick={()=>{this.nextPage(1);}}></span>
 		</div>
 		)
 	}
