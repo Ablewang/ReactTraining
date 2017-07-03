@@ -5,6 +5,8 @@
 	min-height: 250px;
 	background-repeat: no-repeat;
 	position: relative;
+    border: 1px solid #000;
+    box-sizing: border-box;
 }
 .move-img{
 	width: 100%;

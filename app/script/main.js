@@ -4,7 +4,6 @@ import {
 	render
 } from 'react-dom';
 
-import IndexNotify from './IndexNotify';
 import IndexHeader from './IndexHeader';
 import Carousel from './Carousel';
 import IndexProds from './IndexProds';

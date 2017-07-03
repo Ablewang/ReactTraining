@@ -1,49 +1,51 @@
 import React, {
 	Component
 } from 'react'
-import {render} from 'react-dom'
+import {
+	render
+} from 'react-dom'
 import Popup from './Popup';
 import Login from './LoginPopup';
 
 class IndexHeader extends Component {
-	constructor(){
+	constructor() {
 		super()
 		this.setFollow = this.setFollow.bind(this)
 		this.setLoginState = this.setLoginState.bind(this)
 		this.login = this.login.bind(this)
 		this.state = {
-			hd_info :null,
-			fun_info :null,
-			login_info:null
+			hd_info: null,
+			fun_info: null,
+			login_info: null
 		}
 	}
-	componentWillMount(){
+	componentWillMount() {
 		this.setState({
-			hd_info:!this.props.action ? null : this.props.action.getHeaderInfo(),
-			fun_info:!this.props.action ? null : this.props.action.getFunsInfo(),
-			login_info:!this.props.action ? null : this.props.action.getLoginInfo()
+			hd_info: !this.props.action ? null : this.props.action.getHeaderInfo(),
+			fun_info: !this.props.action ? null : this.props.action.getFunsInfo(),
+			login_info: !this.props.action ? null : this.props.action.getLoginInfo()
 		})
 	}
-	setLoginState(state){
+	setLoginState(state) {
 		if (state) {
 			this.setState({
-				login_info:!this.props.action ? null : this.props.action.getLoginInfo()
+				login_info: !this.props.action ? null : this.props.action.getLoginInfo()
 			})
 		}
 	}
-	login(){
-		render(<Login setLoginState={this.setLoginState}/>,document.getElementById('popup'));
+	login() {
+		render(<Login setLoginState={this.setLoginState}/>, document.getElementById('popup'));
 	}
-	logout(){
+	logout() {
 		this.props.action.logout();
 		this.setState({
-			login_info:!this.props.action ? null : this.props.action.getLoginInfo()
+			login_info: !this.props.action ? null : this.props.action.getLoginInfo()
 		})
 	}
-	setFollow(follow){
-		this.props.action.setFollow(follow);
+	setFollow(follow) {
+		this.props.action.setFollow(follow, this.state.login_info.cur_acc);
 		this.setState({
-			fun_info:!this.props.action ? null : this.props.action.getFunsInfo()
+			fun_info: !this.props.action ? null : this.props.action.getFunsInfo()
 		})
 	}
 
@@ -53,7 +55,7 @@ class IndexHeader extends Component {
 		return !this.state.hd_info ? '<span></span>' : (
 			<div>
 				{
-					lg_info.is_login ? <IndexNotify action={this.props.action}/> : <span></span>
+					lg_info.is_login ? <IndexNotify action={this.props.action} login_acc={this.state.login_info.cur_acc}/> : <span></span>
 				}
 				<div className="idx-g-nav">
 					<IconHeader title={this.state.hd_info.title} /> 
@@ -61,7 +63,7 @@ class IndexHeader extends Component {
 					<NavHeader navList = {this.state.hd_info.nav_lst} />
 				</div>
 				<div className="account">
-					{lg_info.is_login ? (<span>欢迎 {lg_info.cur_acc} | <span className="log-action" onClick={()=>{this.logout();}}>退出</span></span>):(<span>游客 | <span className="log-action" onClick={()=>{this.login();}}>登录</span></span>)}
+					{lg_info.is_login ? (<span>欢迎 {lg_info.cur_acc.username} | <span className="log-action" onClick={()=>{this.logout();}}>退出</span></span>):(<span>游客 | <span className="log-action" onClick={()=>{this.login();}}>登录</span></span>)}
 				</div>
 			</div>
 		)
@@ -72,19 +74,22 @@ class IndexNotify extends Component {
 	constructor() {
 		super()
 		this.state = {
-			unnotify_l: []
+			notify: null
 		};
 	}
-	setNoNotify(index) {
-		this.props.action.setNoNotify(index);
-		let list = this.state.unnotify_l;
-		list.push(index);
+	componentWillMount() {
 		this.setState({
-			unnotify_l:list
+			notify: (!this.props.login_acc ? null : this.props.action.getAccountNotify(this.props.login_acc.username))
+		})
+	}
+	setNoNotify(index) {
+		this.props.action.setNoNotify(index, this.props.login_acc.username);
+		this.setState({
+			notify: this.props.action.getAccountNotify(this.props.login_acc.username)
 		})
 	}
 	render() {
-		let notify = this.props.action.getNotify();
+		let notify = this.state.notify;
 		return !notify ? (<span></span>) : (
 			<div className="idx-g-ntc">
 				<span>{notify.text}<a target="__blank" href={notify.url}>立即查看></a></span>
@@ -107,14 +112,15 @@ class IconHeader extends Component {
 }
 
 class FunsHeader extends Component {
-	handelFollow(isfollow){
+	handelFollow(isfollow) {
 		this.props.login_info.is_login ? this.props.setFollow(isfollow) : this.props.login();
 	}
 	render() {
-		var funs = this.props.funs;
+		let funs = this.props.funs;
+		let is_follow = !this.props.login_info.cur_acc ? false : this.props.login_info.cur_acc.is_follow;
 		return (
 			<div className="u-flw">
-				<div className={funs.is_follow?"u-flw-img unflw" : 'u-flw-img flw'} onClick={()=>{funs.is_follow? this.handelFollow(false) : this.handelFollow(true)}}><span></span><a href="javascript:void(0);"></a></div>
+				<div className={is_follow?"u-flw-img unflw" : 'u-flw-img flw'} onClick={()=>{is_follow? this.handelFollow(false) : this.handelFollow(true)}}><span></span><a href="javascript:void(0);"></a></div>
 				<span className="sp-funs">粉丝</span>
 				<span className="sp-funs-cnt">{funs.funs_num}</span>
 			</div>

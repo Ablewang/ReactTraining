@@ -1,45 +1,90 @@
 {
-	"login_inf":{
-		"is_login":false,
-		"cur_acc":""
+	"login_inf": {
+		"is_login": false,
+		"cur_acc": null
 	},
-	"account":{
-		"admin":"admin",
-		"able":"able",
-		"evy":"evy"
+	"account": {
+		"admin": {
+			"username": "admin",
+			"password": "admin",
+			"is_follow": false
+		},
+		"abel": {
+			"username": "abel",
+			"password": "abel",
+			"is_follow": false
+		},
+		"evy": {
+			"username": "evy",
+			"password": "evy",
+			"is_follow": false
+		}
 	},
-	"notify": [{
-		"index": 1,
-		"text": "网易云课堂微专业，帮助你掌握专业技能，令你求职或加薪多一份独特优势！",
-		"url": "www.baidu.com",
-		"is_read": false,
-		"no_notify": false
-	}, {
-		"index": 2,
-		"text": "只此一份，别无二家！",
-		"url": "http://www.163.com/",
-		"is_read": false,
-		"no_notify": true
-	}, {
-		"index": 3,
-		"text": "360驾到！！！！",
-		"url": "https://www.360.cn/",
-		"is_read": false,
-		"no_notify": false
-	}, {
-		"index": 4,
-		"text": "这是一个机会，这是一个另类的机遇！",
-		"url": "https://www.360.cn/",
-		"is_read": false,
-		"no_notify": false
-	}],
+	"notify": {
+		"1": {
+			"index": 1,
+			"text": "网易云课堂微专业，帮助你掌握专业技能，令你求职或加薪多一份独特优势！",
+			"url": "www.baidu.com"
+		},
+		"2": {
+			"index": 2,
+			"text": "只此一份，别无二家！",
+			"url": "http://www.163.com/"
+		},
+		"3": {
+			"index": 3,
+			"text": "360驾到！！！！",
+			"url": "https://www.360.cn/"
+		},
+		"4": {
+			"index": 4,
+			"text": "这是一个机会，这是一个另类的机遇！",
+			"url": "https://www.360.cn/"
+		}
+	},
+	"acc_notify": {
+		"abel": {
+			"1": {
+				"index": 1,
+				"is_read": false,
+				"no_notify": false
+			},
+			"3": {
+				"index": 3,
+				"is_read": false,
+				"no_notify": false
+			},
+			"4": {
+				"index": 4,
+				"is_read": false,
+				"no_notify": false
+			}
+		},
+		"admin": {
+			"1": {
+				"index": 1,
+				"is_read": false,
+				"no_notify": false
+			},
+			"2": {
+				"index": 2,
+				"is_read": false,
+				"no_notify": false
+			},
+			"3": {
+				"index": 3,
+				"is_read": false,
+				"no_notify": false
+			}
+		}
+	},
 	"header": {
 		"title": "网易教育产品部",
 		"nav_lst": ["网易公开课", "云课堂", "中国大学MCC"]
 	},
-	"funs":{
-		"is_follow":false,
-		"funs_num":50
+	"funs": {
+		"follows": [],
+		"funs_num": 50
 	},
 	"banner_lst": ["/imgs/banner1.jpg", "/imgs/banner2.jpg", "/imgs/banner3.jpg"],
 	"prods": [{
