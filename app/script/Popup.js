@@ -1,5 +1,8 @@
 import React,{Component} from 'react'
 import PopupCommonFun from './PopupCommonFun'
+
+import '../css/popup.css'
+
 class Popup extends Component{
 	constructor(){
 		super()
@@ -38,5 +41,6 @@ class Popup extends Component{
 		)
 	}
 }
+
 
 export default Popup
